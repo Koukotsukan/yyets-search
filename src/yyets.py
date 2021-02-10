@@ -43,7 +43,6 @@ class YYETS:
                     season_number = i["season_num"]
                     season_number_list.append(int(season_number))
                 try:
-                    season_number_list.sort()
                     for i in season_number_list:
                         print(str(count) + ". 第" + str(i) + "季")
                         count += 1
