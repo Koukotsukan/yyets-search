@@ -31,9 +31,11 @@
 1. 下载Python代码：
 ```bash
 wget https://raw.githubusercontent.com/Koukotsukan/yyets_search/main/src/yyets.py
-wget https://raw.githubusercontent.com/Koukotsukan/yyets_search/main/src/requirements.txt
 ```
 2. (可选)输入指令安装Python依赖：
+```bash
+wget https://raw.githubusercontent.com/Koukotsukan/yyets_search/main/src/requirements.txt
+```
 ```bash
 pip3 install -r requirements.txt
 ```
