@@ -1,5 +1,6 @@
 # yyets_search
 Python写的用来查询人人影视的小工具(配合sqlite3)
+![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets_search?style=flat-square)
 
 ## 截图
 ![screenshot](screenshot/screenshot.png)
@@ -40,4 +41,4 @@ python3 yyets.py
 4. (仅第一次使用时)键入数据库文件的绝对地址
 
 ## 免责声明
-数据结构来自于网络
+数据结构来自于网络，本人不持有且不提供相关数据库
