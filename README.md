@@ -1,5 +1,5 @@
 # yyets_search
-![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets_search?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets-search?style=flat-square)
 
 ### Python写的用来查询人人影视的小工具(配合sqlite3)
 ---
