@@ -1,6 +1,9 @@
 # yyets_search
-Python写的用来查询人人影视的小工具(配合sqlite3)
 ![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets_search?style=flat-square)
+
+### Python写的用来查询人人影视的小工具(配合sqlite3)
+---
+
 
 ## 截图
 ![screenshot](screenshot/screenshot.png)
