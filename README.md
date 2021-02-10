@@ -14,7 +14,7 @@ Python写的用来查询人人影视的小工具
    ```
    + 输入sql命令：
    ```sql
-   CREATE INDEX index ON yyets (name);
+   CREATE INDEX index ON resource (name);
    ```
 1. 输入指令：
 ```bash
