@@ -21,7 +21,11 @@ class YYETS:
         global episode
         start_time = time.time()
         cursor = self.database_connection.cursor()
-        selector = cursor.execute("SELECT data FROM resource WHERE name like \"%" + str(self.regex) + "%\";")
+        try:
+            selector = cursor.execute("SELECT data FROM resource WHERE name like \"%" + str(self.regex) + "%\";")
+        except:
+            print("查询失败，请检查你的数据库或路径")
+            os._exit(0)
         data_list = []
         for i in selector:
             data = json.loads(i[0])
@@ -49,12 +53,10 @@ class YYETS:
                         count += 1
                 except:
                     print("Something got wrong")
-
                 choose_season = input("请输入你的结果:")
                 if choose_season != "0":
                     selected = season[int(choose_season)-1]["items"]
                     count = 1
-
                     episode_list = []
                     for i in selected:
                         for m in selected[i]:
