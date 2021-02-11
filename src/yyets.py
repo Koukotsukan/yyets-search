@@ -42,6 +42,7 @@ class YYETS:
                 for i in season:
                     season_number = i["season_num"]
                     season_number_list.append(int(season_number))
+                # season_number_list.sort()
                 try:
                     for i in season_number_list:
                         print(str(count) + ". 第" + str(i) + "季")
@@ -67,6 +68,8 @@ class YYETS:
                     choose_episode = input("请输入你的结果:")
                     if choose_episode != "0":
                         episode_chosen = episode_list[int(choose_episode)-1]
+                        with open("output.txt", "w") as f:
+                            f.write(str(data["data"]["info"]["cnname"]) + "|第" + str(choose_season) + "季|第" + str(episode_chosen) + "集\n------\n")
                         for i in selected:
                             for m in selected[i]:
                                 if str(episode_chosen) == m["episode"]:
@@ -90,6 +93,8 @@ class YYETS:
                                             elif n["way"] == "115":
                                                 n = "[" + i +"]微云"
                                             print(n + ": " + address)
+                                            with open("output.txt", "a") as f:
+                                                f.write(n + ": " + address + "\n")
                                     except:
                                         print("Something went wrong")
 
@@ -101,6 +106,8 @@ class YYETS:
             os._exit(0)
         self.search()
         self.close_database()
+        if input("是否打开生成文件？[0/1]") == "1":
+            os.system("open -t output.txt")
 
 
 if __name__ == '__main__':
