@@ -1,8 +1,7 @@
-# yyets_search
+# yyets-search
 ![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets-search?style=flat-square)
 
 ### Python写的用来查询人人影视的小工具(配合sqlite3)
----
 
 
 ## 截图
@@ -17,6 +16,15 @@
       + json
       + os
       + time
+## 功能
++ 模糊查询
++ 选季选集
++ 生成输出文件
+
+## 待更新功能
+- [ ] 一键输出所选季集
+- [ ] 自动测试磁链活性
+- [ ] 调用远程数据库
 
 ## 使用指南(Linux)：
 0. (可选)建立索引：
