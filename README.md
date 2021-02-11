@@ -1,7 +1,9 @@
 # yyets-search
 ![GitHub license](https://img.shields.io/github/license/Koukotsukan/yyets-search?style=flat-square)
 
-### Python写的用来查询人人影视的小工具(配合sqlite3)
+### Python写的用来查询人人影视的小工具(配合sqlite3) 
+
+[English Version](./README_EN.md)
 
 
 ## 截图
@@ -38,11 +40,11 @@
    ```
 1. 下载Python代码：
 ```bash
-wget https://raw.githubusercontent.com/Koukotsukan/yyets_search/main/src/yyets.py
+wget https://raw.githubusercontent.com/Koukotsukan/yyets-search/main/src/yyets.py
 ```
 2. (可选)输入指令安装Python依赖：
 ```bash
-wget https://raw.githubusercontent.com/Koukotsukan/yyets_search/main/src/requirements.txt
+wget https://raw.githubusercontent.com/Koukotsukan/yyets-search/main/src/requirements.txt
 ```
 ```bash
 pip3 install -r requirements.txt
