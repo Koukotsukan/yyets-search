@@ -22,7 +22,7 @@ class YYETS:
         start_time = time.time()
         cursor = self.database_connection.cursor()
         try:
-            selector = cursor.execute("SELECT data FROM resource WHERE name like \"%" + str(self.regex) + "%\";")
+            selector = cursor.execute("SELECT data FROM resource WHERE name LIKE (?);", ("%" + str(self.regex) + "%",))
         except:
             print("查询失败，请检查你的数据库或路径")
             os._exit(0)
@@ -35,18 +35,17 @@ class YYETS:
             print(str(self.counter + 1) + ". " + cnname + "(" + enname + ")")
             self.counter += 1
         end_time = time.time()
-        print("查询完毕,共计{}条结果，耗时{}秒\n".format(self.counter, '%.2f' % (end_time - start_time)))
+        print("查询完毕,共计{}条结果，耗时{}秒".format(self.counter, '%.2f' % (end_time - start_time)))
         if self.counter != 0:
             choose_result = input("请输入您的结果:")
             if choose_result != "0":
-                data = data_list[int(choose_result)-1]
+                data = data_list[int(choose_result) - 1]
                 season = data["data"]["list"]
                 count = 1
                 season_number_list = []
                 for i in season:
                     season_number = i["season_num"]
                     season_number_list.append(int(season_number))
-                # season_number_list.sort()
                 try:
                     for i in season_number_list:
                         print(str(count) + ". 第" + str(i) + "季")
@@ -55,7 +54,7 @@ class YYETS:
                     print("Something got wrong")
                 choose_season = input("请输入你的结果:")
                 if choose_season != "0":
-                    selected = season[int(choose_season)-1]["items"]
+                    selected = season[int(choose_season) - 1]["items"]
                     count = 1
                     episode_list = []
                     for i in selected:
@@ -69,9 +68,10 @@ class YYETS:
                         count += 1
                     choose_episode = input("请输入你的结果:")
                     if choose_episode != "0":
-                        episode_chosen = episode_list[int(choose_episode)-1]
+                        episode_chosen = episode_list[int(choose_episode) - 1]
                         with open("output.txt", "w") as f:
-                            f.write(str(data["data"]["info"]["cnname"]) + "|第" + str(choose_season) + "季|第" + str(episode_chosen) + "集\n------\n")
+                            f.write(str(data["data"]["info"]["cnname"]) + "|第" + str(choose_season) + "季|第" + str(
+                                episode_chosen) + "集\n------\n")
                         for i in selected:
                             for m in selected[i]:
                                 if str(episode_chosen) == m["episode"]:
@@ -84,21 +84,23 @@ class YYETS:
                                             else:
                                                 passwd = "无"
                                             if n["way"] == "1":
-                                                n = "[" + i +"]电驴"
+                                                n = "[" + i + "]电驴"
                                             elif n["way"] == "2":
-                                                n = "[" + i +"]磁力"
+                                                n = "[" + i + "]磁力"
                                             elif n["way"] == "9" or n["way"] == "102":
-                                                n = "[" + i +"]百度网盘"
+                                                n = "[" + i + "]百度网盘"
                                                 address = address + ", 密码: " + passwd
                                             elif n["way"] == "12":
-                                                n = "[" + i +"]城通网盘"
+                                                n = "[" + i + "]城通网盘"
                                             elif n["way"] == "115":
-                                                n = "[" + i +"]微云"
+                                                n = "[" + i + "]微云"
                                             print(n + ": " + address)
                                             with open("output.txt", "a") as f:
                                                 f.write(n + ": " + address + "\n")
                                     except:
                                         print("Something went wrong")
+                if input("是否打开生成文件？[0/1]") == "1":
+                    os.system("open -t output.txt")
 
     def start(self):
         try:
@@ -108,8 +110,6 @@ class YYETS:
             os._exit(0)
         self.search()
         self.close_database()
-        if input("是否打开生成文件？[0/1]") == "1":
-            os.system("open -t output.txt")
 
 
 if __name__ == '__main__':
@@ -120,7 +120,7 @@ if __name__ == '__main__':
         reader_path = input("请输入database的路径:")
         with open("./yconfig.json", "w") as f:
             f.write(reader_path)
-    while(1):
+    while 1:
         regex = input("请输入你要查询的美剧名称:")
         reader = YYETS(reader_path, regex)
         reader.start()
